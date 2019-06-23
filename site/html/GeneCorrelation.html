@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript">
+     
+          var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-46075289-1']);
+            _gaq.push(['_trackPageview']);
+          
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+          
+        </script>
+        <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+        <script src='../js/GeneCorrelation.js' type="text/javascript"></script>
+        <link rel="stylesheet" href="../style/HipHopStyle.css">
+        <title>${correlationType} Correlation Results for Gene # ${geneID}</title>
+     </head>
+     <body>
+        <p><a href='../index' class='back'>back to main page</a></p>
+        <h1>Strain-strain correlation in ${correlationType} assays for gene ${geneID}</h1>
+        <p>
+            The graph below shows the correlation of all ${corType} deletion strains for your selected gene \
+                as calculated across all performed ${correlationType} experiments. Marking an area in the plot \
+                will display the corresponding gene identifiers of the correlating deletion ${corType} \
+                deletion strains as a table below the graph. Clicking on a row in the table will display \
+                <b style='color:Red'>HIP</b>/<b style='color:RoyalBlue'>HOP</b> z-score results for the strain \
+                with a deletion in the corresponding gene across all tested compounds.
+        </p>
+        <p>For more information please go to: <a href='http://dx.doi.org/10.1016/j.micres.2013.11.004'>Hoepfner et al., 2013</a></p>
+        <div id='log'></div>
+        <div id='HIPHOP' align='left'></div>
+        <div id='HIPHOPTable' align='left'>
+            <table>
+                <thead style='Display: None'>
+                    <tr >
+                        <th>Gene ID</th>
+                        <th>Gene Name</th>
+                        <th>Correlation</th>
+                        <th>Viability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div>
+             <hr>
+             <p>This web portal has been tested with Safari, Chrome, Firefox; other browsers might not render data properly.</p>
+        </div>
+        <script type="text/javascript">
+            var correlationType='${correlationType}',
+                geneID='${geneID}';
+            d3.select('#log')
+                .append('p')
+                    .text('please be patient while the data loads...')
+                         .style('font-weight','bold');
+            d3.json('../geneCorrelationJson/${correlationType}/${geneID}/${lim}',draw);
+        </script>
+     </body>
+</html>

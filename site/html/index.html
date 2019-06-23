@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+     <head>
+     <meta charset="UTF-8">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+     <link rel="stylesheet" href="style/HipHopStyle.css">
+     <script type="text/javascript">
+
+	 var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-46075289-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+          
+	</script>
+     
+     <title>HIP HOP Visualization App</title>
+     </head>
+     <body>
+          <h2>Web portal for</h2>
+          <h1>High-resolution chemical dissection of a model eukaryote reveals targets, pathways and gene functions</h1>
+          <p class='small'>Dominic Hoepfner<sup>1*+</sup>, Stephen B. Helliwell<sup>1+</sup>, Heather Sadlish<sup>1+</sup>, Sven Schuierer<sup>1</sup>, \
+               Ireos Filipuzzi<sup>1</sup>, Sophie Brachat<sup>1</sup>, Bhupinder Bhullar<sup>1</sup>, Uwe Plikat<sup>1</sup>, \
+               Yann Abraham<sup>1</sup>, Marc Altorfer<sup>1</sup>, Thomas Aust<sup>1</sup>, Lukas Baeriswyl<sup>1</sup>, \
+               Raffaele Cerino<sup>1</sup>, Lena Chang<sup>1</sup>, David Estoppey<sup>1</sup>, Juerg Eichenberger<sup>1</sup>, \
+               Mathias Frederiksen<sup>1</sup>, Nicole Hartmann<sup>1</sup>, Annika Hohendahl<sup>1</sup>, Britta Knapp<sup>1</sup>, \
+               Philipp Krastel<sup>1</sup>, Nicolas Melin<sup>1</sup>, Florian Nigsch<sup>1</sup>, Edward J. Oakeley<sup>1</sup>, \
+               Virginie Petitjean<sup>1</sup>, Frank Petersen<sup>1</sup>, Ralph Riedl<sup>1</sup>, Esther K. Schmitt<sup>1</sup>, \
+               Frank Staedtler<sup>1</sup>, Christian Studer<sup>1</sup>, John A. Tallarico<sup>1</sup>, Stefan Wetzel<sup>1</sup>, \
+               Mark C. Fishman<sup>2</sup>, Jeffery A. Porter<sup>2</sup>, N. Rao Movva<sup>1</sup>
+          </p>
+          <p class='small'>Affiliations:</p>
+          <ul class='small'>
+               <li><sup>1</sup> Novartis Institutes for BioMedical Research, Novartis Campus, CH-4056 Basel Switzerland</li>
+               <li><sup>2</sup> Novartis Institutes for BioMedical Research, 250 Massachusetts Avenue Cambridge MA 02139, United States of America</li>
+               <li><sup>*</sup> Correspondence to: Dominic Hoepfner, <a href='mailto:dominic.hoepfner@novartis.com'>dominic.hoepfner@novartis.com</a></li>
+               <li><sup>+</sup> Equal contributors</li>
+          </ul>
+          <p>Published in <a href='http://dx.doi.org/10.1016/j.micres.2013.11.004'>Microbiological Research 169 (2014) pp. 107-120</a></p>
+          <p><b>A detailed description of the applied methodologies and tested compounds can be found at the link above. \
+               At the linked site you can also download the supplemental material for further analysis. Alternatively, \
+               The underlying data tables and supplemental materials mentioned in the publication can be downloaded from \
+               <a href='http://doi.org/10.5061/dryad.v5m8v'>http://doi.org/10.5061/dryad.v5m8v</a></b></p>
+          <p>To query the data enter a compound number or systematic gene name into the corresponding box and hit enter</p>
+          <div id='log'></div>
+          <div id='dBody'>
+               <div id='compoundResult' class='dInput'>
+                    <div style='width:70%;float:left'>
+	                    <p><b>Single compound HIP HOP results</b></p>
+	                    <p>sensitivity vs. z-score</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='results/compound' target='_blank'>
+                              <input compoundAutocomplete=1 type=text name=ID placeholder='192'>
+                         </form>
+                         enter CMB ID or name of compound
+                    </div>
+               </div>
+               <div id='compoundProfile' class='dInput'>
+                    <div style='width:70%;float:left'>
+                         <p><b>Single compound HIP HOP results</b></p>
+                         <p>chromosome location vs. sensitivity</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='profile/compound' target='_blank'>
+                              <input compoundAutocomplete=1 type=text name=ID placeholder='192'>
+                         </form>
+                         enter CMB ID or name of compound
+                    </div>
+               </div>
+               <div id='geneProfile' class='dInput'>
+                    <div style='width:70%;float:left'>
+                         <p><b>Single strain HIP HOP profile</b></p>
+                         <p>compound vs. z-score</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='profile/gene' target='_blank'>
+                              <input geneAutocomplete=1 type=text name=ID placeholder='YAL011W'>
+                         </form>
+                         enter systematic or common name of gene
+                    </div>
+               </div>
+               <div id='geneHIPCorrelation' class='dInput'>
+                    <div style='width:70%;float:left'>
+                         <p><b>Strain correlation across HIP assays</b></p>
+                         <p>shows correlation of heterozygous deletion strains to each other across all performed HIP experiments</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='geneCorrelation/HIP' target='_blank'>
+                              <input geneAutocomplete=1 type=text name=geneID placeholder='YAL011W'>
+                         </form>
+                         enter systematic or common name of gene
+                    </div>
+               </div>
+               <div id='geneHOPCorrelation' class='dInput'>
+                    <div style='width:70%;float:left'>
+                         <p><b>Strain correlation across HOP assays</b></p>
+                         <p>shows correlation of homozygous deletion strains to each other across all performed HOP experiments</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='geneCorrelation/HOP' target='_blank'>
+                              <input geneAutocomplete=1 type=text name=geneID placeholder='YAL011W'>
+                         </form>
+                         enter systematic or common name of gene
+                    </div>
+               </div>
+               <div id='compoundHIPCorrelation' class='dInput'>
+                    <div style='width:70%;float:left'>
+                         <p><b>Compound correlation across HIP assays</b></p>
+                         <p>shows correlation of compounds to each other across all performed HIP experiments</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='compoundCorrelation/HIP' target='_blank'>
+                              <input compoundAutocomplete=1 type=text name=compoundID placeholder='192'>
+                         </form>
+                         enter CMB ID or name of compound
+                    </div>
+               </div>
+               <div id='geneHOPCorrelation' class='dInput'>
+                    <div style='width:70%;float:left'>
+                         <p><b>Compound correlation across HOP assays</b></p>
+                         <p>shows correlation of compounds to each other across all performed HOP experiments</p>
+                    </div>
+                    <div class='ui-widget'>
+                         <form action='compoundCorrelation/HOP' target='_blank'>
+                              <input compoundAutocomplete=1 type=text name=compoundID placeholder='192'>
+                         </form>
+                         enter CMB ID or name of compound
+                    </div>
+               </div>
+          </div>
+          <hr>
+          <p>This web portal has been tested with Safari, Chrome, Firefox; other browsers might not render data properly.</p>
+          <script>
+	          var geneAutocompletes = document.querySelectorAll('[geneAutocomplete]'),
+	              compoundAutocompletes = document.querySelectorAll('[compoundAutocomplete]');
+		      for(i=0; i<geneAutocompletes.length; i++) {
+			    	 $(geneAutocompletes[i]).keypress(function(event){
+			    		 if(event.keyCode == 13){
+			    	    	     event.preventDefault();
+			    	      }
+			    	 });
+		           $(geneAutocompletes[i]).autocomplete(
+		                     {
+		                         source:"geneQueryJson",
+		                         minLength : 2,
+                                   autoFocus : true,
+		                         select: function(event,ui) {
+		                              var input = $(event.target);
+		                              $(input).val(ui.item.value);
+		                              $(input).closest('form').submit();
+		                              return false;
+		                              }
+		                     }
+		           );
+		      }
+		      for(i=0; i<compoundAutocompletes.length; i++) {
+		    	     $(compoundAutocompletes[i]).keypress(function(event){
+		    	         if(event.keyCode == 13){
+		    	             event.preventDefault();
+		    	         }
+		    	     });
+		          $(compoundAutocompletes[i]).autocomplete(
+		                    {
+		                        source:"compoundQueryJson",
+		                        minLength : 2,
+		                        autoFocus : true,
+		                        select: function(event,ui) {
+		                             var input = $(event.target);
+		                             $(input).val(ui.item.value);
+		                             $(input).closest('form').submit();
+		                             return false;
+		                             }
+		                    }
+		          );
+		      }
+		      if(window.navigator.appName=="Microsoft Internet Explorer") {
+		          $("#log").append("<p style='font-weight:bold;color:red'>Internet Explorer is not supported; please switch to a different browser for full functionality.</p>")
+		      };
+          </script>
+     </body>
+</html>

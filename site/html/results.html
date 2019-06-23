@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript">
+     
+        var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-46075289-1']);
+            _gaq.push(['_trackPageview']);
+          
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+          
+        </script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src='../js/experiments.js' type="text/javascript"></script>
+        <script src='../js/results.js' type="text/javascript"></script>
+        <link rel="stylesheet" href="../style/HipHopStyle.css">
+        <title>HIP HOP Results for ${base} ${ID}</title>
+    </head>
+    <body>
+        <p><a href='../index' class='back'>back to main page</a></p>
+        <h1>HIP HOP Results for ${fullBase} ${fullName}</h1>
+	       <p>
+	           The graph below shows the distribution of heterozygous (<b style='color:Red'>HIP</b>) and \
+	               homozygous (<b style='color:RoyalBlue'>HOP</b>) deletion strains as plotted by sensitivity and z-score. \
+	               Marking an area in the plot will display the corresponding strain annotation as a table below the graph. \
+	               Clicking on a row in the table will display <b style='color:Red'>HIP</b>/<b style='color:RoyalBlue'>HOP</b> \
+	               ${score} results for ${fullDest}.
+	       </p>
+        <div id='ExperimentDesc' style='align:left;Display:None'>
+            <p>
+                Several experiments and compound concentrations might have been tested and the results of all are included in the plots: \
+                    to exclude a given concentration click on the corresponding row \
+                    in the experiment table on the right side of the graph.
+            </p>
+        </div>
+        <p>For more information please go to: <a href='http://dx.doi.org/10.1016/j.micres.2013.11.004' target='_blank'>Hoepfner et al., 2013</a></p>
+        <div id='log'></div>
+        <div id='HIPHOPContainer'>
+             <div id='HIPHOP'></div>
+             <div id='HIPHOPExperiments'>
+                <table>
+                    <thead style='Display: none'>
+                        <tr>
+                            <th>Group</th>
+                            <th>Experiment</th>
+                            <th>Type</th>
+                            <th>Concentration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div id='HIPHOPTable'>
+	            <table>
+	                <thead style='Display: None'>
+	                    <tr>
+	                        <th>Gene ID</th>
+	                        <th>Gene Name</th>
+	                        <th>Compound ID</th>
+	                        <th>Compound Name</th>
+	                        <th>Compound Concentration</th>
+	                        <th>Experiment ID</th>
+	                        <th>Sensitivity Score</th>
+	                        <th>z-score</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                </tbody>
+	            </table>
+	        </div>
+        </div>
+        <div>
+	        <hr>
+	        <p>This web portal has been tested with Safari, Chrome, Firefox; other browsers might not render data properly.</p>
+        </div>
+        <script type="text/javascript">
+		      var ID='${ID}',
+		          base='${base}',
+		          baseCol='${baseCol}',
+		          dest='${dest}',
+		          destCol='${destCol}',
+		          prettyName='${prettyName}'
+		          fullName='${fullName}';
+	           d3.select('#log')
+	               .append('p')
+	                   .text('please be patient while the data loads...')
+	                        .style('font-weight','bold');
+                if(base=='compound') {
+                	d3.json('../compound2experimentJson/${ID}/${lim}',fill);
+                }
+                d3.json('../resultsJson/${base}/${ID}/${lim}',draw);
+        </script>
+    </body>
+</html>

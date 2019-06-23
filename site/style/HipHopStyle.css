@@ -1,0 +1,121 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family:Arial;
+}
+
+h1 {
+	font-size:24pt;
+}
+
+.small {
+	font-size:10pt;
+}
+
+a.back:link {color:Gray;}      /* unvisited link */
+a.back:visited {color:Gray;}  /* visited link */
+a.back:hover {color:Gray;}  /* mouse over link */
+a.back:active {color:Gray;} 
+
+ul {list-style-type:none;}
+
+th {
+    background-color: grey;
+}
+
+tr {
+     text-align: center;
+}
+
+tr.HIP {
+    background-color: Coral;
+}
+
+tr.HOP {
+    background-color: RoyalBlue;
+}
+
+tr.correlation {
+    background-color: LightGreen;
+}
+
+#HIPHOPContainer {
+	position:relative;
+	width:1400px;
+	float:left;
+}
+
+#HIPHOP {
+	float:left;
+}
+
+#HIPHOPExperiment {
+     float:left;
+}
+
+#HIPHOPTable {
+	width:1000px;
+	align:left;
+}
+
+div.dInput {
+	border: 1px solid black;width:100%;
+	float:left;
+}
+
+div.ui-widget {
+	 width:30%;
+	 float:left;
+	 font-size:12pt;
+	 font-family:Arial;
+}
+
+.axis path {
+    fill: none;
+    stroke: black;
+}
+
+.axis {
+    font-size: 8pt;
+    font-family: sans-serif;
+}
+
+.tick {
+    fill: none;
+    stroke: black
+}
+
+rect.extent {
+    fill: #000;
+    fill-opacity: .125;
+    stroke: #fff;
+}
+
+circle {
+    stroke: Grey;
+    stroke-width: 0.5px;
+    fill: Grey;
+    opacity: 0.6
+}
+
+circle.HIP {
+    fill: Red;
+}
+
+circle.HOP {
+    fill: RoyalBlue;
+}
+
+.line {
+  fill: none;
+  stroke: lightgrey;
+  stroke-width: 1.5px;
+}
+
+path.HIP {
+  stroke: Coral;
+}
+
+path.HOP {
+  stroke: RoyalBlue;
+}
